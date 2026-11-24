@@ -3,8 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
-import { Clock, MapPin, Menu, X, ArrowRight, ShieldCheck } from "lucide-react";
-import { PHARMACY_CONFIG } from "@/lib/pharmacyConfig";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 const NAV_LINKS = [
   { label: "Philosophy", href: "#about" },
@@ -31,52 +30,29 @@ export function Header() {
       className={`sticky top-0 z-40 transition-all duration-300 ${
         scrolled
           ? "bg-[#f8fafa]/95 backdrop-blur-md shadow-xs border-b border-[#0f766e]/15"
-          : "bg-transparent border-b border-transparent"
+          : "bg-[#f8fafa]/80 backdrop-blur-xs border-b border-[#dce8e5]/60"
       }`}
     >
-      {/* Refined Upper Announcement & Trust Bar */}
-      <div className="bg-[#071916] text-teal-200/90 text-[11px] sm:text-xs py-2 px-4 border-b border-teal-950/80">
-        <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-          <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
-            <span className="flex items-center gap-1.5 font-medium text-white">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-              <span>Community Dispensary &middot; {PHARMACY_CONFIG.location.displayAddress}</span>
-            </span>
-            <span className="hidden sm:flex items-center gap-1.5 text-teal-300/80 border-l border-teal-900 pl-4">
-              <Clock className="w-3.5 h-3.5 text-teal-400 shrink-0" />
-              <span>{PHARMACY_CONFIG.hours.weekdaysDisplay}</span>
-              <span className="text-teal-300/60 text-[10px]">(Sun: 12&ndash;7 PM)</span>
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-teal-300/70 text-[10px] font-mono tracking-wider hidden md:inline-flex items-center gap-1.5">
-              <ShieldCheck className="w-3 h-3 text-teal-400" />
-              LICENSED ETHICAL SOURCING &middot; OSUN STATE, NIGERIA
-            </span>
-          </div>
-        </div>
-      </div>
-
       {/* Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
+        <div className="flex items-center justify-between h-18 sm:h-20">
           <Link
             href="/staff/login"
             onClick={close}
             aria-label="MaxiCare Pharmacy — Staff Authentication Entry"
-            className="rounded-lg focus-visible:ring-2 focus-visible:ring-[#0f766e] focus-visible:ring-offset-2 outline-none group"
+            className="rounded-xl focus-visible:ring-2 focus-visible:ring-[#0f766e] focus-visible:ring-offset-2 outline-none group py-1"
             title="MaxiCare Pharmacy"
           >
-            <Logo size="sm" />
+            <Logo size="md" />
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-2" aria-label="Main Navigation">
+          <nav className="hidden md:flex items-center gap-1.5" aria-label="Main Navigation">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-3.5 py-2 text-sm font-medium text-[#132220] hover:text-[#0f766e] rounded-xl hover:bg-teal-50/80 transition-colors focus-visible:ring-2 focus-visible:ring-[#0f766e] outline-none"
+                className="px-4 py-2 text-sm font-medium text-[#132220] hover:text-[#0f766e] rounded-xl hover:bg-teal-50/80 transition-colors focus-visible:ring-2 focus-visible:ring-[#0f766e] outline-none"
               >
                 {link.label}
               </Link>
@@ -95,7 +71,7 @@ export function Header() {
 
             <button
               onClick={() => setOpen(!open)}
-              className="md:hidden p-2 rounded-xl text-[#132220] hover:bg-black/5 active:scale-95 transition-all focus-visible:ring-2 focus-visible:ring-[#0f766e] outline-none"
+              className="md:hidden p-2 rounded-xl text-[#132220] hover:bg-black/5 active:scale-95 transition-all focus-visible:ring-2 focus-visible:ring-[#0f766e] outline-none cursor-pointer"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
             >
