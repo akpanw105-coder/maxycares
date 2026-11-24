@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
-import { Clock, MapPin, Menu, X, ArrowRight } from "lucide-react";
+import { Clock, MapPin, Menu, X, ArrowRight, ShieldCheck } from "lucide-react";
 import { PHARMACY_CONFIG } from "@/lib/pharmacyConfig";
 
 const NAV_LINKS = [
@@ -34,26 +34,30 @@ export function Header() {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      {/* Top Essential Header Bar */}
-      <div className="bg-[#071916] text-teal-200/90 text-[11px] sm:text-xs py-2 px-4 border-b border-teal-950">
+      {/* Refined Upper Announcement & Trust Bar */}
+      <div className="bg-[#071916] text-teal-200/90 text-[11px] sm:text-xs py-2 px-4 border-b border-teal-950/80">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-          <div className="flex items-center gap-5">
-            <span className="flex items-center gap-1.5 font-medium">
-              <MapPin className="w-3.5 h-3.5 text-teal-400 shrink-0" />
-              {PHARMACY_CONFIG.location.displayAddress}
+          <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
+            <span className="flex items-center gap-1.5 font-medium text-white">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+              <span>Community Dispensary &middot; {PHARMACY_CONFIG.location.displayAddress}</span>
             </span>
-            <span className="hidden sm:flex items-center gap-1.5 text-teal-300/80">
+            <span className="hidden sm:flex items-center gap-1.5 text-teal-300/80 border-l border-teal-900 pl-4">
               <Clock className="w-3.5 h-3.5 text-teal-400 shrink-0" />
-              {PHARMACY_CONFIG.hours.weekdaysDisplay}
+              <span>{PHARMACY_CONFIG.hours.weekdaysDisplay}</span>
+              <span className="text-teal-300/60 text-[10px]">(Sun: 12&ndash;7 PM)</span>
             </span>
           </div>
-          <span className="text-teal-300/70 text-[11px] font-mono tracking-wider hidden md:block">
-            AUTHENTIC DISPENSARY · LICENSED WHOLESALE SOURCING
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-teal-300/70 text-[10px] font-mono tracking-wider hidden md:inline-flex items-center gap-1.5">
+              <ShieldCheck className="w-3 h-3 text-teal-400" />
+              LICENSED ETHICAL SOURCING &middot; OSUN STATE, NIGERIA
+            </span>
+          </div>
         </div>
       </div>
 
-      {/* Main Navigation */}
+      {/* Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           <Link
@@ -72,7 +76,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-3.5 py-2 text-sm font-medium text-[#132220] hover:text-[#0f766e] rounded-lg hover:bg-teal-50/80 transition-colors focus-visible:ring-2 focus-visible:ring-[#0f766e] outline-none"
+                className="px-3.5 py-2 text-sm font-medium text-[#132220] hover:text-[#0f766e] rounded-xl hover:bg-teal-50/80 transition-colors focus-visible:ring-2 focus-visible:ring-[#0f766e] outline-none"
               >
                 {link.label}
               </Link>
@@ -83,7 +87,7 @@ export function Header() {
           <div className="flex items-center gap-3">
             <Link
               href="#contact"
-              className="hidden md:inline-flex items-center gap-2 bg-[#0b2520] text-white text-xs font-semibold uppercase tracking-wider px-5 py-2.5 rounded-xl hover:bg-[#0f766e] active:scale-[0.98] transition-all focus-visible:ring-2 focus-visible:ring-[#0f766e] outline-none"
+              className="hidden md:inline-flex items-center gap-2 bg-[#0b2520] text-white text-xs font-semibold uppercase tracking-wider px-5 py-2.5 rounded-xl hover:bg-[#0f766e] active:scale-[0.98] transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-[#0f766e] outline-none"
             >
               Visit Dispensary
               <ArrowRight className="w-3.5 h-3.5 text-teal-300" />
@@ -118,7 +122,7 @@ export function Header() {
             <Link
               href="#contact"
               onClick={close}
-              className="flex justify-center items-center gap-2 w-full bg-[#0b2520] text-white py-3 rounded-xl text-sm font-semibold hover:bg-[#0f766e] active:scale-[0.98] transition-all"
+              className="flex justify-center items-center gap-2 w-full bg-[#0b2520] text-white py-3 rounded-xl text-sm font-semibold hover:bg-[#0f766e] active:scale-[0.98] transition-all shadow-xs"
             >
               Visit Dispensary &amp; Contact
               <ArrowRight className="w-4 h-4 text-teal-300" />
